@@ -9,7 +9,7 @@
 - Teaches Figma workshops and mentors aspiring designers one-on-one.
 
 ## Links
-- [Application page](https://fuwadmuhammed.github.io/DA/)
+- [Application page](https://figma.byfu.app/)
 - [Design portfolio](https://fuwad.design)
 - [Friends of Figma Kozhikode](https://friends.figma.com/kozhikode)
 - [Instagram](https://instagram.com/fuwad.design)
