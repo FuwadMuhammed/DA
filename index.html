@@ -106,6 +106,9 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .track .slot{width:390px;height:218px;border-radius:14px;flex:none}
 @keyframes slide{to{transform:translateX(-50%)}}
 
+/* since label */
+.since{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;font-weight:500;color:#555;background:#f4f4f4;border-radius:999px;padding:5px 12px;margin-bottom:12px}
+.since::before{content:"";width:7px;height:7px;border-radius:50%;background:#14ba60}
 /* year badge */
 .badge{display:inline-block;vertical-align:middle;margin-left:6px;background:var(--ink);color:#fff;font-size:13px;font-weight:600;line-height:18px;padding:5px 12px;border-radius:999px;white-space:nowrap}
 
@@ -339,7 +342,8 @@ section[id]{scroll-margin-top:120px}
 
 <!-- 02 Community -->
 <section id="community" class="col" style="margin-top:110px">
-  <h2>Friends of Figma Kozhikode <span class="badge">Jun 2024</span></h2>
+  <span class="since">Since June 2024</span>
+  <h2>Friends of Figma Kozhikode</h2>
   <div class="prose">
     <p>Kozhikode has a lot of talented people who design, but for a long time they did it alone. Few meetups, few mentors, and almost no place to ask a “silly” Figma question without a flight to Bangalore.</p>
     <p>In June 2024 I started Friends of Figma Kozhikode to change that: a room where students, freelancers, developers and product designers learn from each other. I pitch the events, find speakers, design the posters and the flow of the day, host on stage, and follow up with everyone after.</p>
