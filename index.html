@@ -44,11 +44,14 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 /* hero */
 .hero{padding-top:90px}
 .portrait-wrap{position:relative;height:240px}
-.portrait{position:absolute;left:50%;top:0;margin-left:-104px;width:208px;height:208px;border-radius:50%}
+.portrait{position:absolute;left:0;top:0;width:208px;height:208px;border-radius:50%;cursor:pointer}
+.portrait video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait-wrap .play{left:150px;top:152px;margin-left:0;border:0;cursor:pointer;transition:transform .2s}
+.portrait-wrap .play:hover{transform:scale(1.08)}
 .play{position:absolute;left:50%;top:170px;margin-left:-27px;width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;text-decoration:none}
 .play i{width:0;height:0;border-left:16px solid var(--ink);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
-.intro-note{position:absolute;left:50%;top:160px;margin-left:-178px;font-size:23px;line-height:25px;transform:rotate(-18deg);text-align:center;pointer-events:none}
-.intro-arrow{position:absolute;left:50%;top:144px;margin-left:-92px;pointer-events:none}
+.intro-note{position:absolute;left:250px;top:70px;font-size:23px;line-height:25px;transform:rotate(6deg);text-align:center;pointer-events:none}
+.intro-arrow{position:absolute;left:208px;top:128px;pointer-events:none}
 .name{margin-top:60px;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.01em}
 .role{font-size:28px;line-height:34px;color:#a3a3a3;margin-top:2px}
 .logos{display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px;margin-top:26px;font-size:20px}
@@ -142,6 +145,16 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 .closing .chips{justify-content:center;margin-top:34px}
 .copy{font-size:13px;color:var(--mute);margin:70px 0 32px;text-align:center}
 
+/* intro video modal */
+.vm{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,0);pointer-events:none;transition:background .45s ease}
+.vm.on{background:rgba(0,0,0,.78);pointer-events:auto}
+.vm-c{position:fixed;border-radius:50%;overflow:hidden;background:#111;box-shadow:0 30px 80px rgba(0,0,0,.5);transition:left .55s cubic-bezier(.2,.8,.2,1),top .55s cubic-bezier(.2,.8,.2,1),width .55s cubic-bezier(.2,.8,.2,1),height .55s cubic-bezier(.2,.8,.2,1)}
+.vm-c video,.vm-c img{width:100%;height:100%;object-fit:cover;display:block}
+.vm-x{position:fixed;top:18px;right:18px;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:22px;line-height:42px;cursor:pointer;opacity:0;transition:opacity .3s}
+.vm.on .vm-x{opacity:1}
+.vm-n{position:fixed;left:0;right:0;bottom:28px;text-align:center;color:#ccc;font-size:14px;opacity:0;transition:opacity .3s}
+.vm.on .vm-n{opacity:1}
+
 /* nav */
 .pblur{position:fixed;top:0;left:0;right:0;height:120px;z-index:15;pointer-events:none}
 .pblur i{position:absolute;inset:0;display:block}
@@ -182,8 +195,10 @@ section[id]{scroll-margin-top:120px}
   .stat strong{font-size:22px}
   .stat{padding:12px 10px}
   .closing .hand{font-size:26px;line-height:30px}
-  .intro-note{margin-left:-160px;font-size:20px}
-  .intro-arrow{margin-left:-80px}
+  .portrait{width:168px;height:168px}
+  .portrait-wrap .play{left:116px;top:118px}
+  .intro-note{left:196px;top:44px;font-size:20px;line-height:22px}
+  .intro-arrow{left:166px;top:100px;transform:scale(.85);transform-origin:top left}
 }
 @media (prefers-reduced-motion:reduce){
   .track{animation:none}.rail{overflow-x:auto}
@@ -195,6 +210,7 @@ section[id]{scroll-margin-top:120px}
 <body>
 
 <div class="pblur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="vm" id="vm" aria-hidden="true"><div class="vm-c" id="vmc"></div><button class="vm-x" id="vmx" aria-label="Close">×</button><div class="vm-n" id="vmn"></div></div>
 <nav class="nav" aria-label="Sections">
   <ul>
     <li><a href="#about">About</a></li>
@@ -208,10 +224,10 @@ section[id]{scroll-margin-top:120px}
 <!-- 01 About -->
 <section id="about" class="hero col">
   <div class="portrait-wrap">
-    <div class="portrait slot" style="border-radius:50%"><img src="assets/fuwad.webp" alt="Portrait of Fuwad"></div>
-    <a class="play" href="#teaching" aria-label="See what I teach"><i></i></a>
+    <div class="portrait slot" id="portrait" role="button" tabindex="0" aria-label="Play intro video"><img src="assets/fuwad.webp" alt="Portrait of Fuwad"></div>
+    <button class="play" id="playBtn" aria-label="Play intro video"><i></i></button>
     <div class="intro-note hand">Let me<br>introduce<br>myself</div>
-    <svg class="intro-arrow" width="72" height="80" viewBox="0 0 72 80" fill="none" aria-hidden="true"><path d="M4 76 C 20 58, 34 36, 30 18 C 26 2, 6 10, 8 32 C 10 50, 34 50, 64 8" stroke="#111" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <svg class="intro-arrow" width="60" height="64" viewBox="0 0 60 64" fill="none" aria-hidden="true"><path d="M54 4 C 56 32, 38 52, 8 54 M20 44 L7 54 L21 62" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <div style="margin-top:60px">
@@ -385,6 +401,42 @@ section[id]{scroll-margin-top:120px}
 </section>
 
 <script>
+// intro video: swap in first frame if assets/intro.mp4 exists
+(function(){
+  var SRC='assets/intro.mp4',portrait=document.getElementById('portrait'),vm=document.getElementById('vm'),vmc=document.getElementById('vmc'),n=document.getElementById('vmn'),has=false,open=false;
+  fetch(SRC,{method:'HEAD'}).then(function(r){
+    if(!r.ok)return;has=true;
+    var v=document.createElement('video');v.src=SRC+'#t=0.1';v.muted=true;v.playsInline=true;v.preload='metadata';v.setAttribute('aria-hidden','true');
+    portrait.replaceChildren(v);
+  }).catch(function(){});
+  function size(){return Math.min(innerWidth-32,innerHeight-120,620)}
+  function setRect(r){vmc.style.left=r.left+'px';vmc.style.top=r.top+'px';vmc.style.width=r.width+'px';vmc.style.height=r.height+'px'}
+  function openIt(){
+    if(open)return;open=true;
+    var r=portrait.getBoundingClientRect(),m;
+    vmc.innerHTML='';
+    if(has){m=document.createElement('video');m.src=SRC;m.playsInline=true;m.controls=true;m.setAttribute('controlsList','nodownload')}
+    else{m=document.createElement('img');m.src='assets/fuwad.webp';m.alt='';n.textContent='Intro video coming soon'}
+    vmc.appendChild(m);
+    vmc.style.transition='none';setRect(r);vmc.getBoundingClientRect();vmc.style.transition='';
+    vm.classList.add('on');vm.setAttribute('aria-hidden','false');
+    var s=size();setRect({left:(innerWidth-s)/2,top:(innerHeight-s)/2-20,width:s,height:s});
+    if(has)setTimeout(function(){m.play().catch(function(){})},350);
+  }
+  function closeIt(){
+    if(!open)return;open=false;
+    var m=vmc.firstChild;if(m&&m.pause)m.pause();
+    vm.classList.remove('on');vm.setAttribute('aria-hidden','true');n.textContent='';
+    setRect(portrait.getBoundingClientRect());
+  }
+  portrait.addEventListener('click',openIt);
+  portrait.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openIt()}});
+  document.getElementById('playBtn').addEventListener('click',openIt);
+  document.getElementById('vmx').addEventListener('click',closeIt);
+  vm.addEventListener('click',function(e){if(e.target===vm)closeIt()});
+  addEventListener('keydown',function(e){if(e.key==='Escape')closeIt()});
+  addEventListener('resize',function(){if(open){var s=size();setRect({left:(innerWidth-s)/2,top:(innerHeight-s)/2-20,width:s,height:s})}});
+})();
 // Event photo rails (assets/event-1.webp ... event-8.webp)
 (function(){
   var alts=['UX India design week with a speaker','Handing over a gift on stage at FOF Kozhikode','UX India design week awards','Speaking at an FOF Kozhikode workshop','Presenting an intro to Figma','Hosting an FOF Kozhikode meetup','FOF Kozhikode community group photo','Presenting at a design meetup'];
