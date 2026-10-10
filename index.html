@@ -37,7 +37,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#111; --body:#333; --mute:#999; --line:#eee; --bg:#fff; --chip-line:#ececec;
+  --ink:#111; --body:#333; --mute:#6b6b6b; --line:#eee; --bg:#fff; --chip-line:#ececec;
   --f-red:#f24e1e; --f-orange:#ff7262; --f-purple:#a259ff; --f-blue:#1abcfe; --f-green:#0acf83;
   --col:540px; --gut:24px;
 }
@@ -65,7 +65,7 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 /* photo slot: drop a file at the listed path and it appears */
 .slot{position:relative;overflow:hidden;background:#f4f4f4;display:flex;align-items:center;justify-content:center;text-align:center}
 .slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.slot small{font-size:12px;line-height:16px;color:#aaa;padding:10px;position:relative}
+.slot small{font-size:12px;line-height:16px;color:#767676;padding:10px;position:relative}
 .slot img[hidden]{display:none}
 
 /* hero */
@@ -80,7 +80,7 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 .intro-note{position:absolute;left:250px;top:70px;font-size:23px;line-height:25px;transform:rotate(6deg);text-align:center;pointer-events:none}
 .intro-arrow{position:absolute;left:208px;top:128px;pointer-events:none}
 .name{margin-top:60px;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-.01em}
-.role{font-size:28px;line-height:34px;color:#a3a3a3;margin-top:2px}
+.role{font-size:28px;line-height:34px;color:#767676;margin-top:2px}
 .logos{display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px;margin-top:26px;font-size:20px}
 .logos div{display:flex;align-items:center;gap:8px}
 .logos img{display:block}
@@ -163,7 +163,7 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 .work a:hover b{text-decoration:underline dotted;text-underline-offset:3px}
 .work .y{color:var(--mute)}
 .work b{font-weight:500}
-.work small{display:block;font-size:14px;color:#888;margin-top:2px;line-height:20px}
+.work small{display:block;font-size:14px;color:#6b6b6b;margin-top:2px;line-height:20px}
 .work .go{color:var(--mute)}
 
 /* closing */
@@ -172,6 +172,39 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 .closing .chips{justify-content:center;margin-top:34px}
 .copy{font-size:13px;color:var(--mute);margin:70px 0 32px;text-align:center}
 
+.skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;text-decoration:none;transition:top .2s}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+.nav a:focus-visible,.chip:focus-visible,.portrait:focus-visible{outline-offset:2px}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
+.quote{border:1px solid var(--line);border-radius:14px;padding:18px}
+.quote blockquote{font-size:15.5px;line-height:25px;color:#333}
+.quote figcaption{display:flex;align-items:center;gap:12px;margin-top:14px}
+.quote img,.quote .ini{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none;background:#f1f1f1;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#555}
+.quote b{display:block;font-weight:500;font-size:15px;line-height:20px}
+.quote small{display:block;font-size:13px;line-height:18px;color:var(--mute)}
+@media (min-width:900px){.quotes{margin-left:-110px;margin-right:-110px;grid-template-columns:1fr 1fr}}
+.dl{margin-top:14px}
+
+@media print{
+  @page{margin:14mm}
+  body{font-size:12.5pt;line-height:1.5}
+  .nav,.pblur,.vm,.skip,.callout,.wide,.play,.intro-arrow,.rail[aria-hidden="true"],.badge{display:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  section.col{margin-top:28pt!important;break-inside:avoid-page}
+  .hero{padding-top:0}
+  .rail{margin-top:24pt;-webkit-mask-image:none;mask-image:none;overflow:visible}
+  .track{animation:none;width:auto;flex-wrap:wrap;transform:none}
+  .track .slot{width:calc(25% - 8px);height:110pt}
+  .track .slot{display:none}
+  .chip{box-shadow:none;border-color:#ccc}
+  .chip[href^="http"]::after,.chip[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
+  .chip span{display:none}
+  .quote,.card,.tl-row,.learn div{break-inside:avoid}
+  .closing{margin-top:28pt}
+}
 /* intro video modal */
 .vm{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,0);pointer-events:none;transition:background .45s ease}
 .vm.on{background:rgba(0,0,0,.78);pointer-events:auto}
@@ -227,6 +260,8 @@ section[id]{scroll-margin-top:120px}
   .intro-note{left:196px;top:44px;font-size:20px;line-height:22px}
   .intro-arrow{left:166px;top:100px;transform:scale(.85);transform-origin:top left}
 }
+@media (max-width:640px){.portrait-wrap{height:190px}.hero-body{margin-top:36px!important}}
+@media (max-width:420px){.nav a{padding:6px 8px;font-size:12.5px}.nav ul{gap:0}}
 @media (prefers-reduced-motion:reduce){
   .track{animation:none}.rail{overflow-x:auto}
   .reveal{opacity:1;transform:none;transition:none}
@@ -236,6 +271,7 @@ section[id]{scroll-margin-top:120px}
 </head>
 <body>
 
+<a class="skip" href="#about">Skip to content</a>
 <div class="pblur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <div class="vm" id="vm" aria-hidden="true"><div class="vm-c" id="vmc"></div><button class="vm-x" id="vmx" aria-label="Close">×</button><div class="vm-n" id="vmn"></div></div>
 <nav class="nav" aria-label="Sections">
@@ -257,7 +293,7 @@ section[id]{scroll-margin-top:120px}
     <svg class="intro-arrow" width="60" height="64" viewBox="0 0 60 64" fill="none" aria-hidden="true"><path d="M54 4 C 56 32, 38 52, 8 54 M20 44 L7 54 L21 62" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
-  <div style="margin-top:60px">
+  <div class="hero-body" style="margin-top:60px">
     <h1 class="name" style="margin-top:0">Fuwad</h1>
     <div class="role">Designer · Kozhikode, India</div>
 
@@ -315,9 +351,9 @@ section[id]{scroll-margin-top:120px}
 <section class="col" style="margin-top:96px">
   <h2>What the community taught me</h2>
   <div class="learn">
-    <div><b>Beginners don't need more tutorials, they need a first win.</b><p>So sessions now end with everyone shipping something small, together.</p></div>
-    <div><b>Designers and developers learn better in the same room.</b><p>Joint sessions on handoff cut the “it didn't look like this in Figma” conversations.</p></div>
-    <div><b>The best feedback comes from honest peers.</b><p>Portfolio reviews and show-and-tell are now a fixed part of our meetups.</p></div>
+    <div><b>Beginners need a first win, not another tutorial.</b><p>Nobody learns Figma by watching. They learn by making something small with someone beside them.</p></div>
+    <div><b>Designers and developers should share a room.</b><p>Most handoff problems are just conversations that never happened.</p></div>
+    <div><b>People share their work when they trust the room.</b><p>Honest feedback only works when it feels safe, so that's what I try to build first.</p></div>
   </div>
 </section>
 
@@ -350,10 +386,13 @@ section[id]{scroll-margin-top:120px}
 
 <section class="col" style="margin-top:80px">
   <h2>What people say</h2>
-  <div class="learn">
-    <div><b>“A session gave me a clear view of UI/UX and the job market.”</b><p>Abdul Rahman, UI/UX aspirant</p></div>
-    <div><b>“He turns the ‘why’ behind work into simple design.”</b><p>Mishal Aboobacker, UX Designer</p></div>
-    <div><b>“His mentorship helped me grow.”</b><p>Aysha Shaba, Jr Creative Designer</p></div>
+  <div class="quotes">
+    <figure class="quote"><blockquote>“Your design is what drew me to the FOF design team. The mentorship that followed genuinely helped me grow, think deeper, and design with more clarity. Truly grateful for the guidance.”</blockquote><figcaption><img src="assets/people/aysha.jpg" alt="" width="40" height="40" loading="lazy"><span><b>Aysha Shaba</b><small>Jr Creative Designer</small></span></figcaption></figure>
+    <figure class="quote"><blockquote>“Working with Fuwad was a smooth and positive experience. He understands the “why” behind the work and turns it into simple, thoughtful design.”</blockquote><figcaption><img src="assets/people/mishal.jpg" alt="" width="40" height="40" loading="lazy"><span><b>Mishal Aboobacker</b><small>UX Designer</small></span></figcaption></figure>
+    <figure class="quote"><blockquote>“Working with him has been a great experience. He always designs with the final product in mind and understands things from a developer’s perspective.”</blockquote><figcaption><img src="assets/people/akash.jpg" alt="" width="40" height="40" loading="lazy"><span><b>Akash NO</b><small>Frontend Dev</small></span></figcaption></figure>
+    <figure class="quote"><blockquote>“Working with him is comfortable and reassuring, he’s highly focused on what matters, adding small details that elevate everything.”</blockquote><figcaption><img src="assets/people/rahul.jpg" alt="" width="40" height="40" loading="lazy"><span><b>Rahul MK</b><small>Motion Graphic Designer</small></span></figcaption></figure>
+    <figure class="quote"><blockquote>“I had a session with Fuwad, and it was worth every minute. He broke down UI/UX in a clear, practical way and gave me a solid understanding of the current job market.”</blockquote><figcaption><span class="ini" aria-hidden="true">AR</span><span><b>Abdul Rahman</b><small>UI UX aspirant</small></span></figcaption></figure>
+    <figure class="quote"><blockquote>“Fuwad did really well at it. The mindset of putting enough effort into upskilling, mentoring, and sharing value is always admirable.”</blockquote><figcaption><img src="assets/people/cp.jpg" alt="" width="40" height="40" loading="lazy"><span><b>Hafis CP</b><small>Associate Product Manager</small></span></figcaption></figure>
   </div>
 </section>
 
@@ -397,9 +436,9 @@ section[id]{scroll-margin-top:120px}
   <div class="eyebrow">06 · Why Figma</div>
   <h2>Why I want this role</h2>
   <div class="prose">
-    <p>Figma was the reason I started designing seriously in 2019. It was free to try, it ran in the browser on my modest laptop, and I could send a link instead of a file. I've since watched the same thing happen to people around the globe.</p>
-    <p>That's what a Design Advocate does: help the next designer have that first moment. I already do it for free, in my city, on my own time. I'd love to do it with Figma, for the wider community across India and beyond: running events, teaching the tools, creating content, and carrying what designers tell me back to the people building the product.</p>
-    <p>If this resonates, I'd love to talk.</p>
+    <p>Figma is the reason I started designing seriously. In 2019 it ran in my browser on a modest laptop, and I could share a link instead of a file. I've since watched the same thing happen to people around me in Kozhikode.</p>
+    <p>That's what a Design Advocate does: helps the next designer have that first moment. I already do it for free, in my city, in my own time. I'd love to do it with Figma, for designers across India and beyond: running events, teaching the tools, creating content, and carrying what designers tell me back to the people building the product.</p>
+    <p>If this sounds like a fit, I'd love to talk.</p>
   </div>
 </section>
 
@@ -422,6 +461,7 @@ section[id]{scroll-margin-top:120px}
     <a class="chip" href="https://instagram.com/fuwad.design" target="_blank" rel="noopener">Instagram <span>↗</span></a>
     <a class="chip" href="https://fuwad.design" target="_blank" rel="noopener">fuwad.design <span>↗</span></a>
   </div>
+  <div class="dl chips"><a class="chip" href="assets/Fuwad-Design-Advocate-Application.pdf" download>Download as PDF <span>↓</span></a></div>
   <div class="copy">© Fuwad 2026</div>
 </section>
 
