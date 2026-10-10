@@ -142,12 +142,22 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 .closing .chips{justify-content:center;margin-top:34px}
 .copy{font-size:13px;color:var(--mute);margin:70px 0 32px;text-align:center}
 
-/* nav dots */
-.nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:center;padding:14px;pointer-events:none}
-.nav ul{pointer-events:auto;list-style:none;display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--chip-line);box-shadow:0 4px 12px rgba(0,0,0,.06);max-width:100%;overflow-x:auto;scrollbar-width:none}
+/* nav */
+.pblur{position:fixed;top:0;left:0;right:0;height:120px;z-index:15;pointer-events:none}
+.pblur i{position:absolute;inset:0;display:block}
+.pblur i:nth-child(1){backdrop-filter:blur(.5px);-webkit-backdrop-filter:blur(.5px);-webkit-mask-image:linear-gradient(#000 0,#000 25%,transparent 50%);mask-image:linear-gradient(#000 0,#000 25%,transparent 50%)}
+.pblur i:nth-child(2){backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px);-webkit-mask-image:linear-gradient(#000 0,#000 18%,transparent 40%);mask-image:linear-gradient(#000 0,#000 18%,transparent 40%)}
+.pblur i:nth-child(3){backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);-webkit-mask-image:linear-gradient(#000 0,#000 12%,transparent 32%);mask-image:linear-gradient(#000 0,#000 12%,transparent 32%)}
+.pblur i:nth-child(4){backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(#000 0,#000 6%,transparent 22%);mask-image:linear-gradient(#000 0,#000 6%,transparent 22%)}
+.pblur::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,0) 70%)}
+.nav{position:fixed;top:12px;left:0;right:0;z-index:20;display:flex;justify-content:center;padding:0 12px;pointer-events:none}
+.nav ul{pointer-events:auto;position:relative;list-style:none;display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);border:1px solid rgba(0,0,0,.06);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 6px 20px rgba(0,0,0,.08);max-width:100%;overflow-x:auto;scrollbar-width:none}
 .nav ul::-webkit-scrollbar{display:none}
-.nav a{display:block;padding:5px 11px;border-radius:999px;font-size:13px;line-height:18px;text-decoration:none;color:#666;white-space:nowrap}
-.nav a:hover,.nav a.on{background:var(--ink);color:#fff}
+.nav a{display:block;padding:6px 14px;border-radius:999px;font-size:14px;line-height:20px;font-weight:500;text-decoration:none;color:#666;white-space:nowrap;transition:background .2s,color .2s}
+.nav a:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav a.on{background:var(--ink);color:#fff}
+section[id]{scroll-margin-top:90px}
+@media (max-width:640px){.nav a{padding:6px 11px;font-size:13px}}
 
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
 .reveal.in{opacity:1;transform:none}
@@ -184,12 +194,12 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 </head>
 <body>
 
+<div class="pblur" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <nav class="nav" aria-label="Sections">
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#community">Community</a></li>
     <li><a href="#teaching">Teaching</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#content">Content</a></li>
     <li><a href="#why">Why Figma</a></li>
   </ul>
