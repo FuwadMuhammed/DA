@@ -531,14 +531,14 @@ section[id]{scroll-margin-top:120px}
   addEventListener('scroll',function(){if(open)closeIt()},{passive:true});
   addEventListener('resize',function(){if(open){var s=size();setRect({left:(innerWidth-s)/2,top:(innerHeight-s)/2-20,width:s,height:s})}});
 })();
-// Event photo rails (assets/event-1.jpg ... event-12.jpg)
+// Event photo rails (assets/event-1.jpg ... event-14.jpg)
 (function(){
-  var N=12;
+  var order=[1,2,13,3,4,5,6,14,7,8,9,10,11,12],N=order.length;
   document.querySelectorAll('.track[data-rail]').forEach(function(t,r){
     var html='';
     for(var k=0;k<2;k++){
       for(var i=0;i<N;i++){
-        var n=((i+r*6)%N)+1;
+        var n=order[(i+r*7)%N];
         html+='<div class="slot"><img src="assets/event-'+n+'.jpg" alt="'+(k?'':'Fuwad at a Friends of Figma Kozhikode event, photo '+n)+'" loading="lazy"></div>';
       }
     }
