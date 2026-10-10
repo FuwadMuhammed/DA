@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fuwad | Design Advocate Application for Figma</title>
 <meta name="description" content="Fuwad is a designer from Kozhikode, India, founder of Friends of Figma Kozhikode (3,220 members, #3 in India) and a Figma user since 2019. See why he is a fit for the Figma Design Advocate role.">
 <meta name="author" content="Fuwad">
@@ -270,6 +270,11 @@ section[id]{scroll-margin-top:120px}
   .nav a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .nav ul{gap:2px}
 }
+@media (max-width:640px){
+  .nav{top:auto;bottom:calc(12px + env(safe-area-inset-bottom))}
+  .pblur{top:auto;bottom:0;height:calc(110px + env(safe-area-inset-bottom));transform:rotate(180deg)}
+  body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+}
 @media (prefers-reduced-motion:reduce){
   .track{animation:none}.rail{overflow-x:auto}
   .reveal{opacity:1;transform:none;transition:none}
@@ -521,6 +526,10 @@ section[id]{scroll-margin-top:120px}
   var links=[].slice.call(document.querySelectorAll('.nav a'));
   var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
   links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)so.observe(s)});
+  function act(h){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===h)})}
+  var fq=document.getElementById('faq');
+  if(fq)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)act('#why')})},{rootMargin:'-40% 0px -55% 0px'}).observe(fq);
+  addEventListener('scroll',function(){if(innerHeight+scrollY>=document.documentElement.scrollHeight-6)act('#why')},{passive:true});
 })();
 </script>
 </body>
