@@ -54,11 +54,12 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
 .logos{display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px;margin-top:26px;font-size:20px}
 .logos div{display:flex;align-items:center;gap:8px}
 .logos img{display:block}
-.ranks{align-items:start;display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
-.ranks figure{background:#111;border-radius:14px;overflow:hidden}
-.ranks img{display:block;width:100%;height:auto}
-.ranks figcaption{color:#fff;font-size:14px;line-height:20px;padding:10px 16px 12px}
-@media (min-width:900px){.ranks{margin-left:-110px;margin-right:-110px;grid-template-columns:1fr 1fr}}
+.nums{display:flex;margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nums div{flex:1;padding:18px 0 16px}
+.nums div+div{padding-left:20px;border-left:1px solid var(--line)}
+.nums strong{display:block;font-size:34px;line-height:38px;font-weight:600;letter-spacing:-.02em}
+.nums span{font-size:14px;color:var(--mute)}
+@media (max-width:640px){.nums strong{font-size:26px;line-height:30px}.nums div+div{padding-left:12px}}
 .fig-mark{display:grid;grid-template-columns:repeat(2,9px);gap:1px}
 .fig-mark b{width:9px;height:9px;display:block}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
@@ -210,7 +211,6 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
     <div class="logos" aria-label="Where I belong">
       <div style="font-weight:500"><img src="assets/figma.svg" alt="" width="20" height="21">Figma since 2019</div>
       <div style="color:#555"><img src="assets/fof.svg" alt="" width="15" height="22">FOF Kozhikode</div>
-      <div style="font-weight:600">fuwad.design</div>
     </div>
 
     <div class="prose" style="color:#222">
@@ -251,9 +251,10 @@ h2{font-size:27px;line-height:34px;font-weight:500;letter-spacing:-.01em}
     <div class="tl-row"><div class="y">Today</div><div><b>3,220 members</b><p>The #3 chapter in India and #5 in the world, out of Figma's global Friends of Figma network.</p></div></div>
   </div>
 
-  <div class="ranks">
-    <figure><img src="assets/rank-top3.webp" alt="India chapters leaderboard: Mumbai 5,961, Bangalore 4,274, Kozhikode 3,217"><figcaption>#3 in India</figcaption></figure>
-    <figure><img src="assets/rank-global.webp" alt="Global chapters leaderboard with Kozhikode ranked 5th at 3,217 members"><figcaption>#5 globally</figcaption></figure>
+  <div class="nums">
+    <div><strong>3,220</strong><span>members</span></div>
+    <div><strong>#3</strong><span>in India</span></div>
+    <div><strong>#5</strong><span>in the world</span></div>
   </div>
   <div class="chips"><a class="chip" href="https://friends.figma.com/kozhikode" target="_blank" rel="noopener">friends.figma.com/kozhikode <span>↗</span></a></div>
 </section>
