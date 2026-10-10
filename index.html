@@ -175,7 +175,12 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .closing{display:flex;flex-direction:column;align-items:center;margin-top:110px;padding:0 var(--gut)}
 .closing .hand{font-size:30px;line-height:34px;text-align:center;transform:rotate(1.5deg)}
 .closing .chips{justify-content:center;margin-top:34px}
-.copy{font-size:13px;color:var(--mute);margin:70px 0 32px;text-align:center}
+.closing .contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:340px}
+.closing .contact .chip{justify-content:center}
+.closing .dl{margin-top:22px;gap:8px}
+.closing .dl .chip{font-size:13.5px;padding:6px 12px;color:#555;box-shadow:none;background:transparent}
+@media (min-width:641px){.closing .contact{display:flex;max-width:none}}
+.copy{font-size:13px;color:var(--mute);margin:48px 0 32px;text-align:center}
 
 .skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;text-decoration:none;transition:top .2s}
 .skip:focus{top:12px}
@@ -464,8 +469,8 @@ section[id]{scroll-margin-top:120px}
 
 <section class="closing">
   <div class="hand">I'd love to be Figma's<br>voice in the community.<br>Let's talk!</div>
-  <div class="chips">
-    <a class="chip" href="mailto:fuwadmuhd@gmail.com">Email <span>↗</span></a>
+  <div class="chips contact">
+    <a class="chip dark" href="mailto:fuwadmuhd@gmail.com">Email <span>↗</span></a>
     <a class="chip" href="https://www.linkedin.com/in/fuwad/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
     <a class="chip" href="https://instagram.com/fuwad.design" target="_blank" rel="noopener">Instagram <span>↗</span></a>
     <a class="chip" href="https://fuwad.design" target="_blank" rel="noopener">fuwad.design <span>↗</span></a>
