@@ -263,6 +263,13 @@ section[id]{scroll-margin-top:120px}
 }
 @media (max-width:640px){.portrait-wrap{height:190px}.hero-body{margin-top:36px!important}}
 @media (max-width:420px){.nav a{padding:6px 8px;font-size:12.5px}.nav ul{gap:0}}
+.nav .ni{display:none}
+@media (max-width:640px){
+  .nav a{display:flex;align-items:center;justify-content:center;width:44px;height:36px;padding:0}
+  .nav a .ni{display:block}
+  .nav a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .nav ul{gap:2px}
+}
 @media (prefers-reduced-motion:reduce){
   .track{animation:none}.rail{overflow-x:auto}
   .reveal{opacity:1;transform:none;transition:none}
@@ -277,11 +284,11 @@ section[id]{scroll-margin-top:120px}
 <div class="vm" id="vm" aria-hidden="true"><div class="vm-c" id="vmc"></div><button class="vm-x" id="vmx" aria-label="Close">×</button><div class="vm-n" id="vmn"></div></div>
 <nav class="nav" aria-label="Sections">
   <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#community">Community</a></li>
-    <li><a href="#teaching">Teaching</a></li>
-    <li><a href="#content">Content</a></li>
-    <li><a href="#why">Why Figma</a></li>
+    <li><a href="#about" aria-label="About"><svg class="ni" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg><span>About</span></a></li>
+    <li><a href="#community" aria-label="Community"><svg class="ni" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17" cy="8" r="2.5"/><path d="M17 13.5c2.5 0 4 1.6 4 4"/></svg><span>Community</span></a></li>
+    <li><a href="#teaching" aria-label="Teaching"><svg class="ni" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M10 8.5l4 2-4 2z"/><path d="M8 20h8"/></svg><span>Teaching</span></a></li>
+    <li><a href="#content" aria-label="Content"><svg class="ni" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="currentColor"/></svg><span>Content</span></a></li>
+    <li><a href="#why" aria-label="Why Figma"><svg class="ni" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg><span>Why Figma</span></a></li>
   </ul>
 </nav>
 
