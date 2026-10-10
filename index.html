@@ -101,7 +101,7 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 
 /* carousels */
 .rail{margin-top:90px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.track{display:flex;gap:10px;width:max-content;animation:slide 60s linear infinite}
+.track{display:flex;gap:10px;width:max-content;animation:slide 90s linear infinite}
 .rail:hover .track{animation-play-state:paused}
 .track .slot{width:390px;height:218px;border-radius:14px;flex:none}
 @keyframes slide{to{transform:translateX(-50%)}}
@@ -531,15 +531,15 @@ section[id]{scroll-margin-top:120px}
   addEventListener('scroll',function(){if(open)closeIt()},{passive:true});
   addEventListener('resize',function(){if(open){var s=size();setRect({left:(innerWidth-s)/2,top:(innerHeight-s)/2-20,width:s,height:s})}});
 })();
-// Event photo rails (assets/event-1.webp ... event-8.webp)
+// Event photo rails (assets/event-1.jpg ... event-12.jpg)
 (function(){
-  var alts=['UX India design week with a speaker','Handing over a gift on stage at FOF Kozhikode','UX India design week awards','Speaking at an FOF Kozhikode workshop','Presenting an intro to Figma','Hosting an FOF Kozhikode meetup','FOF Kozhikode community group photo','Presenting at a design meetup'];
+  var N=12;
   document.querySelectorAll('.track[data-rail]').forEach(function(t,r){
     var html='';
     for(var k=0;k<2;k++){
-      for(var i=0;i<8;i++){
-        var n=((i+r*4)%8)+1;
-        html+='<div class="slot"><img src="assets/event-'+n+'.webp" alt="'+(k?'':alts[n-1])+'" loading="lazy"></div>';
+      for(var i=0;i<N;i++){
+        var n=((i+r*6)%N)+1;
+        html+='<div class="slot"><img src="assets/event-'+n+'.jpg" alt="'+(k?'':'Fuwad at a Friends of Figma Kozhikode event, photo '+n)+'" loading="lazy"></div>';
       }
     }
     t.innerHTML=html;
