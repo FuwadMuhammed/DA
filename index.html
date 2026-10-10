@@ -107,7 +107,7 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* year badge */
-.badge{position:absolute;right:calc(var(--gut) - 4px);top:-8px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;line-height:20px;padding:6px 14px;border-radius:999px;box-shadow:0 0 0 6px #fff}
+.badge{display:inline-block;vertical-align:middle;margin-left:6px;background:var(--ink);color:#fff;font-size:13px;font-weight:600;line-height:18px;padding:5px 12px;border-radius:999px;white-space:nowrap}
 
 /* timeline */
 .tl{margin-top:26px;display:flex;flex-direction:column}
@@ -251,7 +251,6 @@ section[id]{scroll-margin-top:120px}
   .logos{font-size:17px;gap:10px 18px}
   .rail,.callout{margin-top:64px}
   .track .slot{width:260px;height:150px}
-  .badge{right:var(--gut);top:-14px}
   .tl-row,.work a{grid-template-columns:72px 1fr}
   .work .go{display:none}
   .stat strong{font-size:22px}
@@ -327,12 +326,11 @@ section[id]{scroll-margin-top:120px}
 
 <!-- 02 Community -->
 <section id="community" class="col" style="margin-top:110px">
-  <h2>Friends of Figma Kozhikode</h2>
+  <h2>Friends of Figma Kozhikode <span class="badge">Jun 2024</span></h2>
   <div class="prose">
     <p>Kozhikode has a lot of talented people who design, but for a long time they did it alone. Few meetups, few mentors, and almost no place to ask a “silly” Figma question without a flight to Bangalore.</p>
     <p>In June 2024 I started Friends of Figma Kozhikode to change that: a room where students, freelancers, developers and product designers learn from each other. I pitch the events, find speakers, design the posters and the flow of the day, host on stage, and follow up with everyone after.</p>
   </div>
-  <div class="badge">Jun 2024</div>
 
   <div class="tl">
     <div class="tl-row"><div class="y">2019</div><div><b>Opened Figma</b><p>Learned it the hard way: tutorials at midnight, rebuilding apps I loved.</p></div></div>
