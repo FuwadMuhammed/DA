@@ -187,12 +187,13 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .quote img,.quote .ini{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none;background:#f1f1f1;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:#555}
 .quote b{display:block;font-weight:500;font-size:15px;line-height:20px}
 .quote small{display:block;font-size:13px;line-height:18px;color:var(--mute)}
-.dl{margin-top:14px}
+.dl{margin-top:14px;justify-content:center}
+button.chip{font-family:inherit;cursor:pointer}
 
 @media print{
   @page{margin:14mm}
   body{font-size:12.5pt;line-height:1.5}
-  .nav,.pblur,.vm,.skip,.callout,.wide,.play,.intro-arrow,.rail[aria-hidden="true"],.badge{display:none!important}
+  #shareBtn,.nav,.pblur,.vm,.skip,.callout,.wide,.play,.intro-arrow,.rail[aria-hidden="true"],.badge{display:none!important}
   .reveal{opacity:1!important;transform:none!important}
   section.col{margin-top:28pt!important;break-inside:avoid-page}
   .hero{padding-top:0}
@@ -465,11 +466,25 @@ section[id]{scroll-margin-top:120px}
     <a class="chip" href="https://instagram.com/fuwad.design" target="_blank" rel="noopener">Instagram <span>↗</span></a>
     <a class="chip" href="https://fuwad.design" target="_blank" rel="noopener">fuwad.design <span>↗</span></a>
   </div>
-  <div class="dl chips"><a class="chip" href="assets/Fuwad-Design-Advocate-Application.pdf" download>Download as PDF <span>↓</span></a></div>
+  <div class="dl chips"><a class="chip" href="assets/Fuwad-Design-Advocate-Application.pdf" download>Download as PDF <span>↓</span></a>
+    <button class="chip" id="shareBtn" type="button">Share <span aria-hidden="true">↗</span></button></div>
   <div class="copy">© Fuwad 2026</div>
 </section>
 
 <script>
+// share
+(function(){
+  var b=document.getElementById('shareBtn');if(!b)return;
+  var data={title:document.title,text:'Fuwad: Design Advocate application for Figma',url:'https://figma.byfu.app/'};
+  function done(m){var o=b.firstChild.textContent;b.firstChild.textContent=m+' ';setTimeout(function(){b.firstChild.textContent=o},1800)}
+  b.addEventListener('click',function(){
+    if(navigator.share){navigator.share(data).catch(function(){})}
+    else{
+      var fb=function(){var t=document.createElement('textarea');t.value=data.url;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}t.remove();ok?done('Link copied'):prompt('Copy this link',data.url)};
+      navigator.clipboard?navigator.clipboard.writeText(data.url).then(function(){done('Link copied')},fb):fb();
+    }
+  });
+})();
 // intro video: swap in first frame if assets/intro.mp4 exists
 (function(){
   var SRC='assets/intro.mp4',portrait=document.getElementById('portrait'),vm=document.getElementById('vm'),vmc=document.getElementById('vmc'),n=document.getElementById('vmn'),has=false,open=false;
