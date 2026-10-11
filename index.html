@@ -110,6 +110,13 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .track .slot{width:390px;height:218px;border-radius:14px;flex:none}
 @keyframes slide{to{transform:translateX(-50%)}}
 
+/* work glimpse */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 12px;margin-top:26px}
+.work-grid a{text-decoration:none;display:block}
+.work-grid img{display:block;width:100%;aspect-ratio:900/536;object-fit:cover;border-radius:12px;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.work-grid a:hover img{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.work-grid b{display:block;font-weight:500;font-size:15px;line-height:21px;margin-top:10px;color:var(--ink)}
+.work-grid span{display:block;font-size:13px;line-height:18px;color:var(--mute)}
 /* since label */
 .since{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;font-weight:500;color:#555;background:#f4f4f4;border-radius:999px;padding:5px 12px;margin-bottom:12px}
 .since::before{content:"";width:7px;height:7px;border-radius:50%;background:#14ba60}
@@ -230,6 +237,7 @@ button.chip{font-family:inherit;cursor:pointer}
   .chip{box-shadow:none;border-color:#ccc}
   .chip[href^="http"]::after,.chip[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
   .chip span{display:none}
+  .work-grid img{display:none}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
   .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
   .poster{width:calc(50% - 6pt)}
@@ -428,11 +436,17 @@ section[id]{scroll-margin-top:120px}
 
 <!-- 04 Portfolio -->
 <section id="portfolio" class="col" style="margin-top:130px">
-  <h2>See my product work</h2>
+  <h2>A glimpse of my design work</h2>
   <div class="prose">
-    <p>I'm a hands-on designer too: UX case studies, a Figma feature concept, and a few tools I vibe-coded with AI. They all live on my portfolio.</p>
+    <p>I'm a hands-on designer too. Here are a few case studies, including a feature concept for Figma itself. The full work lives on my portfolio.</p>
   </div>
-  <div class="chips"><a class="chip dark" href="https://fuwad.design" target="_blank" rel="noopener">fuwad.design <span>↗</span></a></div>
+  <div class="work-grid">
+    <a href="https://fuwad.design" target="_blank" rel="noopener"><img src="assets/work/case4.jpg" alt="Figma Recorder case study cover" loading="lazy"><b>Figma Preview Recording</b><span>2025 · Feature concept</span></a>
+    <a href="https://fuwad.design" target="_blank" rel="noopener"><img src="assets/work/case1.jpg" alt="Wishlist 2025 case study cover" loading="lazy"><b>Wishlist'25</b><span>2025 · Web app</span></a>
+    <a href="https://fuwad.design" target="_blank" rel="noopener"><img src="assets/work/case3.jpg" alt="Pookkalam.club case study cover" loading="lazy"><b>Pookkalam.club</b><span>2025 · Platform</span></a>
+    <a href="https://fuwad.design" target="_blank" rel="noopener"><img src="assets/work/case2.jpg" alt="Google Pay calculator case study cover" loading="lazy"><b>Calculator in GPay</b><span>2024 · Feature concept</span></a>
+  </div>
+  <div class="chips"><a class="chip dark" href="https://fuwad.design" target="_blank" rel="noopener">See all work on fuwad.design <span>↗</span></a></div>
 </section>
 
 <!-- Event rail 2 -->
