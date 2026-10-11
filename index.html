@@ -269,19 +269,23 @@ button.chip{font-family:inherit;cursor:pointer}
   .closing{break-inside:avoid}
   .hero{padding-top:0}
   .rail{margin-top:24pt;-webkit-mask-image:none;mask-image:none;overflow:visible}
-  .track{animation:none;width:auto;flex-wrap:wrap;transform:none}
-  .track .slot{width:calc(25% - 8px);height:110pt}
+  .track{animation:none;width:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;transform:none}
+  .rail{break-inside:avoid;page-break-inside:avoid}
+  .track .slot{width:auto;height:110pt}
   .track .slot:nth-child(n+5){display:none}
-  .chip{box-shadow:none;border-color:#ccc}
+  *{box-shadow:none!important;text-shadow:none!important}
+  .chip{border-color:#ccc}
   .chip[href^="http"]::after,.chip[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
   .chip span{display:none}
   .work-grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;margin:12pt 0 0;padding:0}
   .work-grid a{width:auto}
   .faq summary::after{display:none}
   .uses div{break-inside:avoid}
-  .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
-  .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
-  .poster{width:calc(50% - 6pt)}
+  .quote,.card,.tl-row,.learn div,.poster,.work-grid a,.uses div,.nums,.ig,.faq details,.hands,.hero-body .chips,.prose,.stats,img{break-inside:avoid;page-break-inside:avoid}
+  h2,h3,.since{break-after:avoid;page-break-after:avoid}
+  .posters,.work-grid,.faq,.uses,.tl,.learn,.quotes{break-before:auto}
+  .posters{display:grid;grid-template-columns:1fr 1fr;gap:10pt;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
+  .poster{width:auto;margin:0!important}
   .ig,.ig-av,.ig-grid .slot,.poster.more{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .hands{animation:none;width:110pt}
   .closing{margin-top:28pt}
