@@ -310,10 +310,10 @@ section[id]{scroll-margin-top:120px}
 @media (max-width:420px){.nav a{padding:6px 8px;font-size:12.5px}.nav ul{gap:0}}
 .nav .ni{display:none}
 @media (max-width:640px){
-  .nav a{display:flex;align-items:center;justify-content:center;width:44px;height:36px;padding:0}
+  .nav a{display:flex;align-items:center;justify-content:center;flex:1;min-width:0;height:40px;padding:0}
   .nav a .ni{display:block}
   .nav a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .nav ul{gap:2px}
+  .nav ul{gap:2px;width:100%;max-width:none;overflow:hidden}
 }
 @media (max-width:640px){
   .nav{top:auto;bottom:calc(12px + env(safe-area-inset-bottom))}
