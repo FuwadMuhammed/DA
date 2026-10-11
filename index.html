@@ -263,24 +263,27 @@ button.chip{font-family:inherit;cursor:pointer}
   body{font-size:12.5pt;line-height:1.5}
   #shareBtn,.nav,.pblur,.vm,.skip,.callout,.wide,.play,.intro-arrow,.rail[aria-hidden="true"],.badge{display:none!important}
   .reveal{opacity:1!important;transform:none!important;filter:none!important}
-  section.col{margin-top:28pt!important;break-inside:avoid-page}
+  section.col{margin-top:22pt!important}
+  h2{break-after:avoid}
+  .chip.dark::after{color:#ccc!important}
+  .closing{break-inside:avoid}
   .hero{padding-top:0}
   .rail{margin-top:24pt;-webkit-mask-image:none;mask-image:none;overflow:visible}
   .track{animation:none;width:auto;flex-wrap:wrap;transform:none}
   .track .slot{width:calc(25% - 8px);height:110pt}
-  .track .slot{display:none}
+  .track .slot:nth-child(n+5){display:none}
   .chip{box-shadow:none;border-color:#ccc}
   .chip[href^="http"]::after,.chip[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
   .chip span{display:none}
   .work-grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;margin:12pt 0 0;padding:0}
   .work-grid a{width:auto}
-  .work-grid img{display:none}
   .faq summary::after{display:none}
   .uses div{break-inside:avoid}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
   .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
   .poster{width:calc(50% - 6pt)}
-  .poster img{display:none}
+  .ig,.ig-av,.ig-grid .slot,.poster.more{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hands{animation:none;width:110pt}
   .closing{margin-top:28pt}
 }
 /* intro video modal */
