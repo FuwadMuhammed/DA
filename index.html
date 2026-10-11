@@ -117,6 +117,11 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .work-grid a:hover img{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
 .work-grid b{display:block;font-weight:500;font-size:15px;line-height:21px;margin-top:10px;color:var(--ink)}
 .work-grid span{display:block;font-size:13px;line-height:18px;color:var(--mute)}
+@media (max-width:640px){
+  .work-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);margin:26px calc(var(--gut)*-1) 0;padding:2px var(--gut) 6px;scrollbar-width:none}
+  .work-grid::-webkit-scrollbar{display:none}
+  .work-grid a{flex:none;width:240px;scroll-snap-align:start}
+}
 /* since label */
 .since{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;font-weight:500;color:#555;background:#f4f4f4;border-radius:999px;padding:5px 12px;margin-bottom:12px}
 .since::before{content:"";width:7px;height:7px;border-radius:50%;background:#14ba60}
@@ -237,6 +242,8 @@ button.chip{font-family:inherit;cursor:pointer}
   .chip{box-shadow:none;border-color:#ccc}
   .chip[href^="http"]::after,.chip[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
   .chip span{display:none}
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;margin:12pt 0 0;padding:0}
+  .work-grid a{width:auto}
   .work-grid img{display:none}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
   .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
