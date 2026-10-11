@@ -122,6 +122,15 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
   .work-grid::-webkit-scrollbar{display:none}
   .work-grid a{flex:none;width:240px;scroll-snap-align:start}
 }
+/* faq accordion */
+.faq{margin-top:22px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;font-size:17px;line-height:26px;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:10px;height:10px;border-right:1.8px solid #555;border-bottom:1.8px solid #555;transform:rotate(45deg) translateY(-2px);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+.faq p{padding:0 28px 18px 0;font-size:15.5px;line-height:25px;color:#555}
+.faq summary:focus-visible{outline-offset:-2px}
 /* since label */
 .since{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;font-weight:500;color:#555;background:#f4f4f4;border-radius:999px;padding:5px 12px;margin-bottom:12px}
 .since::before{content:"";width:7px;height:7px;border-radius:50%;background:#14ba60}
@@ -245,6 +254,7 @@ button.chip{font-family:inherit;cursor:pointer}
   .work-grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;margin:12pt 0 0;padding:0}
   .work-grid a{width:auto}
   .work-grid img{display:none}
+  .faq summary::after{display:none}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
   .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
   .poster{width:calc(50% - 6pt)}
@@ -497,11 +507,11 @@ section[id]{scroll-margin-top:120px}
 <!-- FAQ -->
 <section id="faq" class="col" style="margin-top:130px">
   <h2>Quick answers</h2>
-  <div class="learn">
-    <div><h3 style="font-size:17px;line-height:26px;font-weight:500">Who is Fuwad?</h3><p>Fuwad is a designer based in Kozhikode, Kerala, India. He has used Figma since 2019, leads the Friends of Figma Kozhikode community and shares design content on Instagram at @fuwad.design.</p></div>
-    <div><h3 style="font-size:17px;line-height:26px;font-weight:500">What is Friends of Figma Kozhikode?</h3><p>It is the Kozhikode chapter of Friends of Figma, Figma's global community network. Fuwad started it in June 2024. It has run 40+ events, now has 3,220 members, and ranks #3 in India and #5 worldwide.</p></div>
-    <div><h3 style="font-size:17px;line-height:26px;font-weight:500">Why is Fuwad a good fit for the Figma Design Advocate role?</h3><p>He has built a community from scratch, taught Figma workshops to beginners and working designers, mentors designers one-on-one, creates educational content for a growing audience of 5K+ on Instagram, and has used Figma hands-on since 2019.</p></div>
-    <div><h3 style="font-size:17px;line-height:26px;font-weight:500">How can I contact Fuwad?</h3><p>Email fuwadmuhd@gmail.com, connect on LinkedIn at linkedin.com/in/fuwad, follow @fuwad.design on Instagram, or see his design portfolio at fuwad.design.</p></div>
+  <div class="faq">
+    <details><summary>Who is Fuwad?</summary><p>Fuwad is a designer based in Kozhikode, Kerala, India. He has used Figma since 2019, leads the Friends of Figma Kozhikode community and shares design content on Instagram at @fuwad.design.</p></details>
+    <details><summary>What is Friends of Figma Kozhikode?</summary><p>It is the Kozhikode chapter of Friends of Figma, Figma's global community network. Fuwad started it in June 2024. It has run 40+ events, now has 3,220 members, and ranks #3 in India and #5 worldwide.</p></details>
+    <details open><summary>Why is Fuwad a good fit for the Figma Design Advocate role?</summary><p>He has built a community from scratch, taught Figma workshops to beginners and working designers, mentors designers one-on-one, creates educational content for a growing audience of 5K+ on Instagram, and has used Figma hands-on since 2019.</p></details>
+    <details><summary>How can I contact Fuwad?</summary><p>Email fuwadmuhd@gmail.com, connect on LinkedIn at linkedin.com/in/fuwad, follow @fuwad.design on Instagram, or see his design portfolio at fuwad.design.</p></details>
   </div>
 </section>
 
@@ -519,6 +529,8 @@ section[id]{scroll-margin-top:120px}
 </section>
 
 <script>
+// open all FAQ items when printing
+addEventListener('beforeprint',function(){document.querySelectorAll('.faq details').forEach(function(d){d.open=true})});
 // external links open in a new tab
 document.querySelectorAll('a[href^="http"]').forEach(function(a){if(a.hostname!==location.hostname){a.target="_blank";a.rel="noopener noreferrer"}});
 // sessions scroll fade
