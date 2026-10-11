@@ -140,6 +140,13 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .dark-band .ig-av .slot{border-color:#121212;background:#262626}
 .dark-band .ig-grid .slot{background:#262626}
 .dark-band .ig{color:#fff}
+/* figma user */
+.h-ic{display:inline-block;vertical-align:-2px;margin-right:6px}
+.uses{margin-top:22px;border-top:1px solid var(--line)}
+.uses div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:24px}
+.uses b{font-weight:500}
+.uses span{color:#555}
+@media (max-width:640px){.uses div{grid-template-columns:1fr;gap:2px}}
 /* since label */
 .since{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;font-weight:500;color:#555;background:#f4f4f4;border-radius:999px;padding:5px 12px;margin-bottom:12px}
 .since::before{content:"";width:7px;height:7px;border-radius:50%;background:#14ba60}
@@ -269,6 +276,7 @@ button.chip{font-family:inherit;cursor:pointer}
   .work-grid a{width:auto}
   .work-grid img{display:none}
   .faq summary::after{display:none}
+  .uses div{break-inside:avoid}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
   .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
   .poster{width:calc(50% - 6pt)}
@@ -409,6 +417,20 @@ section[id]{scroll-margin-top:120px}
 <div class="rail" aria-label="Photos from Friends of Figma Kozhikode events">
   <div class="track" data-rail="1"></div>
 </div>
+
+<!-- Figma user -->
+<section id="figma-user" class="col" style="margin-top:110px">
+  <h2><img class="h-ic" src="assets/figma.svg" alt="" width="22" height="23"> Figma user since 2019</h2>
+  <div class="prose">
+    <p>Seven years and counting. I opened Figma in 2019 and it became the place where I design, prototype, teach and meet most of the people I learn from.</p>
+  </div>
+  <div class="uses">
+    <div><b>Designed</b><span>Case studies and product concepts, from a wishlist app to a feature idea for Figma itself.</span></div>
+    <div><b>Prototyped</b><span>Micro-interactions and flows I could share as a link.</span></div>
+    <div><b>Taught</b><span>Beginner sessions and workshops for students and designers.</span></div>
+    <div><b>Built a community</b><span>Friends of Figma Kozhikode, from a small room to 3,220 members.</span></div>
+  </div>
+</section>
 
 <!-- 02 Community -->
 <section id="community" class="col" style="margin-top:110px">
