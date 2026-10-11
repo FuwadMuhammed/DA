@@ -121,6 +121,14 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .tl-row p{color:#666;margin-top:2px}
 
 /* session cards */
+.posters{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);margin:26px calc(var(--gut)*-1) 0;padding:2px var(--gut) 14px;scrollbar-width:thin}
+.poster{flex:none;width:236px;scroll-snap-align:start;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.poster img{display:block;width:100%;aspect-ratio:4/5;object-fit:contain;background:#f4f4f4}
+.poster .pc{padding:12px 14px 16px}
+.poster h3{font-size:16px;line-height:22px;font-weight:500}
+.poster p{font-size:13.5px;line-height:20px;color:#555;margin-top:6px}
+.poster .tag{margin-bottom:8px}
+@media (min-width:900px){.posters{margin-left:-110px;margin-right:-110px;padding-left:110px;padding-right:110px}.poster{width:260px}}
 .cards{display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
 .card{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
 .card h3{font-size:18px;line-height:24px;font-weight:500}
@@ -212,7 +220,10 @@ button.chip{font-family:inherit;cursor:pointer}
   .chip{box-shadow:none;border-color:#ccc}
   .chip[href^="http"]::after,.chip[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
   .chip span{display:none}
-  .quote,.card,.tl-row,.learn div{break-inside:avoid}
+  .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
+  .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0}
+  .poster{width:calc(50% - 6pt)}
+  .poster img{display:none}
   .closing{margin-top:28pt}
 }
 /* intro video modal */
@@ -382,13 +393,15 @@ section[id]{scroll-margin-top:120px}
 <section id="teaching" class="col" style="margin-top:130px">
   <h2>Sessions I've taken</h2>
   <div class="prose">
-    <p>Explaining design is half the job of a Design Advocate. I've taught the same ideas to very different rooms, from first-timers who had never seen a frame to working designers learning prototyping.</p>
+    <p>Explaining design is half the job of a Design Advocate. I've spoken and taught at community meetups, university workshops, online sessions and panels, for audiences from first-time designers to working professionals.</p>
   </div>
-  <div class="cards">
-    <div class="card"><span class="tag">Workshop · Beginners</span><h3>Getting started with Figma</h3><p>Frames, layers, shapes and text: enough to design a first screen by the end of the hour.</p></div>
-    <div class="card"><span class="tag">Workshop · Intermediate</span><h3>Auto layout &amp; components</h3><p>Stop nudging boxes. Build layouts that resize and components that scale.</p></div>
-    <div class="card"><span class="tag">Workshop · Prototyping</span><h3>Prototyping &amp; micro-interactions</h3><p>Turning static screens into something people can feel, and share.</p></div>
-    <div class="card"><span class="tag">1:1 · Mentoring</span><h3>Career &amp; portfolio sessions</h3><p>One-on-one calls on breaking into UI/UX, portfolios and the job market.</p></div>
+  <div class="posters" tabindex="0" aria-label="Sessions I've taken, scroll sideways">
+    <article class="poster"><img src="assets/sessions/kickstarting-2026.jpg" alt="Event poster for Kickstarting 2026: What’s Next for Designers?" loading="lazy"><div class="pc"><span class="tag">Talk · Friends of Figma Kozhikode</span><h3>Kickstarting 2026: What’s Next for Designers?</h3><p>8 Feb 2026 · HOffice Workspace, Calicut</p></div></article>
+    <article class="poster"><img src="assets/sessions/art-of-designing.jpg" alt="Event poster for The Art of Designing: From Vision to Reality" loading="lazy"><div class="pc"><span class="tag">Panel · iLAB × FOF Kozhikode</span><h3>The Art of Designing: From Vision to Reality</h3><p>1 Mar 2025 · Skill Hub</p></div></article>
+    <article class="poster"><img src="assets/sessions/road-to-config.jpg" alt="Event poster for Road to Config" loading="lazy"><div class="pc"><span class="tag">Talk · Friends of Figma Kozhikode</span><h3>Road to Config</h3><p>19 Apr · Mozilor, UL Cyberpark, Kozhikode</p></div></article>
+    <article class="poster"><img src="assets/sessions/ui-ux-workshop.jpg" alt="Event poster for UI UX Design Workshop" loading="lazy"><div class="pc"><span class="tag">Workshop · IEEE SB NITC × FOF Kozhikode</span><h3>UI UX Design Workshop</h3><p>2 and 3 Nov · CHED Seminar Hall</p></div></article>
+    <article class="poster"><img src="assets/sessions/laws-of-ux.jpg" alt="Event poster for Laws of UX" loading="lazy"><div class="pc"><span class="tag">Talk · #DesignMarathon</span><h3>Laws of UX</h3></div></article>
+    <article class="poster"><img src="assets/sessions/intro-figma.jpg" alt="Event poster for Introduction to UI Design with Figma" loading="lazy"><div class="pc"><span class="tag">Online session · IEEE LINK Renaissance 5.0</span><h3>Introduction to UI Design with Figma</h3><p>9 Jul 2024 · Google Meet</p></div></article>
   </div>
   <div class="chips"><a class="chip dark" href="https://fuwad.design" target="_blank" rel="noopener">Book a session <span>↗</span></a></div>
 </section>
