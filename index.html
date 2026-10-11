@@ -147,6 +147,19 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .uses b{font-weight:500}
 .uses span{color:#555}
 @media (max-width:640px){.uses div{grid-template-columns:1fr;gap:2px}}
+/* figpal */
+.figpal{display:none}
+@media (min-width:900px){
+  .closing{position:relative}
+  .figpal{display:block;position:absolute;right:28px;bottom:24px;width:78px;height:78px;border:0;background:none;padding:0;cursor:pointer}
+  .figpal img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .25s}
+  .figpal:hover img{transform:translateY(-2px) rotate(-3deg)}
+  .figpal .zz{position:absolute;left:58px;top:-6px;font:500 15px/1 Caveat,cursive;color:#9a9a9a;letter-spacing:2px;animation:zz 2.6s ease-in-out infinite}
+  @keyframes zz{0%{opacity:0;transform:translate(0,6px)}40%{opacity:1}100%{opacity:0;transform:translate(8px,-12px)}}
+  .fp-bubble{position:absolute;right:0;bottom:92px;width:210px;padding:12px 14px;border-radius:14px 14px 4px 14px;background:#111;color:#fff;font:400 14px/20px 'Inter Tight',sans-serif;text-align:left;opacity:0;transform:translateY(6px) scale(.97);transform-origin:bottom right;pointer-events:none;transition:opacity .25s,transform .25s}
+  .figpal.say .fp-bubble{opacity:1;transform:none}
+}
+@media print{.figpal{display:none!important}}
 /* since label */
 .since{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;font-weight:500;color:#555;background:#f4f4f4;border-radius:999px;padding:5px 12px;margin-bottom:12px}
 .since::before{content:"";width:7px;height:7px;border-radius:50%;background:#14ba60}
@@ -583,10 +596,17 @@ section[id]{scroll-margin-top:120px}
   </div>
   <div class="dl chips"><a class="chip" href="assets/Fuwad-Design-Advocate-Application.pdf" download target="_blank" rel="noopener noreferrer">Download as PDF <span>↓</span></a>
     <button class="chip" id="shareBtn" type="button">Share <span aria-hidden="true">↗</span></button></div>
+  <button class="figpal" id="figpal" type="button" aria-label="Figpal, sleeping"><span class="zz" aria-hidden="true">z z z</span><img src="assets/figpal.png" alt="" width="78" height="78" loading="lazy"><span class="fp-bubble" id="fpBubble" role="status">Figpal is sleeping. Don't disturb. Talk to Fuwad instead.</span></button>
   <div class="copy">© Fuwad 2026</div>
 </section>
 
 <script>
+// figpal
+(function(){
+  var b=document.getElementById('figpal');if(!b)return;var t;
+  b.addEventListener('click',function(){b.classList.add('say');clearTimeout(t);t=setTimeout(function(){b.classList.remove('say')},3800)});
+  document.addEventListener('click',function(e){if(!b.contains(e.target)){b.classList.remove('say')}});
+})();
 // all links open in a new tab (except in-page anchors)
 document.querySelectorAll('a[href]:not([href^="#"])').forEach(function(a){a.target='_blank';a.rel='noopener noreferrer'});
 // accordion with blur-in text
