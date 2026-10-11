@@ -100,9 +100,13 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .stat span{font-size:13px;line-height:17px;color:var(--mute);display:block;margin-top:4px}
 
 /* carousels */
-.rail{margin-top:90px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.track{display:flex;gap:10px;width:max-content;animation:slide 90s linear infinite}
-.rail:hover .track{animation-play-state:paused}
+.rail{margin-top:90px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rail::-webkit-scrollbar,.posters::-webkit-scrollbar{display:none}
+.rail.drag,.posters.drag{cursor:grabbing}
+.posters{cursor:grab}
+.posters.drag{scroll-snap-type:none}
+.track{display:flex;gap:10px;width:max-content}
+.track img,.poster img{-webkit-user-drag:none;pointer-events:none}
 .track .slot{width:390px;height:218px;border-radius:14px;flex:none}
 @keyframes slide{to{transform:translateX(-50%)}}
 
@@ -121,7 +125,7 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .tl-row p{color:#666;margin-top:2px}
 
 /* session cards */
-.posters{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);margin:26px calc(var(--gut)*-1) 0;padding:2px var(--gut) 14px;scrollbar-width:thin}
+.posters{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);margin:26px calc(var(--gut)*-1) 0;padding:2px var(--gut) 14px;scrollbar-width:none}
 .posters{--l:0px;--r:40px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--l),#000 calc(100% - var(--r)),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 var(--l),#000 calc(100% - var(--r)),transparent 100%)}
 .poster{flex:none;width:236px;scroll-snap-align:start;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
 .poster img{display:block;width:100%;aspect-ratio:4/5;object-fit:contain;background:#f4f4f4}
@@ -573,6 +577,36 @@ section[id]{scroll-margin-top:120px}
   var fq=document.getElementById('faq');
   if(fq)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)act('#why')})},{rootMargin:'-40% 0px -55% 0px'}).observe(fq);
   addEventListener('scroll',function(){if(innerHeight+scrollY>=document.documentElement.scrollHeight-6)act('#why')},{passive:true});
+})();
+// drag to scroll + auto-drift for photo strips
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function drag(el){
+    var down=false,sx=0,sl=0,moved=false;
+    el.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=el.scrollLeft;el.classList.add('drag')});
+    addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>3)moved=true;el.scrollLeft=sl-dx});
+    addEventListener('pointerup',function(){if(!down)return;down=false;el.classList.remove('drag')});
+    el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+  }
+  document.querySelectorAll('.posters').forEach(drag);
+  document.querySelectorAll('.rail').forEach(function(rail,idx){
+    drag(rail);
+    var half=function(){return rail.scrollWidth/2},pos=idx?0:0,dir=idx?-1:1,hold=0,visible=false;
+    if(dir<0)requestAnimationFrame(function(){pos=half();rail.scrollLeft=pos});
+    new IntersectionObserver(function(es){visible=es[0].isIntersecting}).observe(rail);
+    ['pointerdown','touchstart','wheel'].forEach(function(t){rail.addEventListener(t,function(){hold=Date.now()+2500},{passive:true})});
+    rail.addEventListener('scroll',function(){if(Date.now()<hold||rail.matches(':hover'))pos=rail.scrollLeft});
+    function wrap(){var h=half();if(!h)return;if(rail.scrollLeft>=h)rail.scrollLeft-=h;else if(rail.scrollLeft<=0&&dir<0)rail.scrollLeft+=h;pos=rail.scrollLeft}
+    rail.addEventListener('scroll',function(){wrap()},{passive:true});
+    function tick(){
+      if(!reduce&&visible&&Date.now()>hold&&!rail.matches(':hover')&&!rail.classList.contains('drag')){
+        pos+=dir*0.5;var h=half();if(h){if(pos>=h)pos-=h;if(pos<0)pos+=h}
+        rail.scrollLeft=pos;
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
 })();
 </script>
 </body>
