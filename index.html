@@ -133,23 +133,13 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .faq summary:focus-visible{outline-offset:-2px}
 .faq p{will-change:opacity,filter}
 /* instagram dark band */
-.dark-band{margin-top:130px;padding:84px 0 90px;background:#000;color:#f5f5f5}
-.dark-band h2{color:#fff}
-.dark-band .prose{color:#a8a8a8}
-.dark-band .prose strong{color:#fff}
-.dark-band .prose a{color:#fff}
+.dark-band{margin-top:130px}
 .dark-band .ig{background:#121212;border-color:#262626}
 .dark-band .ig b{color:#fff}
 .dark-band .ig em{color:#a8a8a8}
 .dark-band .ig-av .slot{border-color:#121212;background:#262626}
 .dark-band .ig-grid .slot{background:#262626}
-.dark-band .chip{background:#fff;color:#000;border-color:#fff;box-shadow:none}
-.dark-band .chip span{color:#555}
-body.on-dark .pblur::after{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,0) 70%)}
-body.on-dark .nav ul{background:rgba(28,28,28,.72);border-color:rgba(255,255,255,.12);box-shadow:0 6px 20px rgba(0,0,0,.5)}
-body.on-dark .nav a{color:#b5b5b5}
-body.on-dark .nav a:hover{color:#fff;background:rgba(255,255,255,.1)}
-body.on-dark .nav a.on{background:#fff;color:#111}
+.dark-band .ig{color:#fff}
 /* since label */
 .since{display:inline-flex;align-items:center;gap:8px;font-size:13px;line-height:18px;font-weight:500;color:#555;background:#f4f4f4;border-radius:999px;padding:5px 12px;margin-bottom:12px}
 .since::before{content:"";width:7px;height:7px;border-radius:50%;background:#14ba60}
@@ -279,7 +269,6 @@ button.chip{font-family:inherit;cursor:pointer}
   .work-grid a{width:auto}
   .work-grid img{display:none}
   .faq summary::after{display:none}
-  .dark-band{background:#fff;color:#111;padding:0}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
   .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
   .poster{width:calc(50% - 6pt)}
@@ -562,12 +551,6 @@ section[id]{scroll-margin-top:120px}
 </section>
 
 <script>
-// dark band: switch nav styling while it sits under the nav
-(function(){
-  var band=document.getElementById('darkBand');if(!band)return;var tick=false;
-  function upd(){tick=false;var r=band.getBoundingClientRect(),y=matchMedia('(max-width:640px)').matches?innerHeight-40:36;document.body.classList.toggle('on-dark',r.top<y&&r.bottom>y)}
-  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});addEventListener('resize',upd);upd();
-})();
 // all links open in a new tab (except in-page anchors)
 document.querySelectorAll('a[href]:not([href^="#"])').forEach(function(a){a.target='_blank';a.rel='noopener noreferrer'});
 // accordion with blur-in text
