@@ -122,6 +122,7 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 
 /* session cards */
 .posters{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);margin:26px calc(var(--gut)*-1) 0;padding:2px var(--gut) 14px;scrollbar-width:thin}
+.posters{--l:0px;--r:40px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 var(--l),#000 calc(100% - var(--r)),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 var(--l),#000 calc(100% - var(--r)),transparent 100%)}
 .poster{flex:none;width:236px;scroll-snap-align:start;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
 .poster img{display:block;width:100%;aspect-ratio:4/5;object-fit:contain;background:#f4f4f4}
 .poster .pc{padding:12px 14px 16px}
@@ -221,7 +222,7 @@ button.chip{font-family:inherit;cursor:pointer}
   .chip[href^="http"]::after,.chip[href^="mailto"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
   .chip span{display:none}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
-  .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0}
+  .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
   .poster{width:calc(50% - 6pt)}
   .poster img{display:none}
   .closing{margin-top:28pt}
@@ -493,6 +494,12 @@ section[id]{scroll-margin-top:120px}
 </section>
 
 <script>
+// sessions scroll fade
+(function(){
+  var p=document.querySelector('.posters');if(!p)return;
+  function u(){var max=p.scrollWidth-p.clientWidth;p.style.setProperty('--l',p.scrollLeft>4?'48px':'0px');p.style.setProperty('--r',p.scrollLeft<max-4?'48px':'0px')}
+  p.addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u();
+})();
 // share
 (function(){
   var b=document.getElementById('shareBtn');if(!b)return;
