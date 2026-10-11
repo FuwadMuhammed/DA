@@ -355,7 +355,7 @@ section[id]{scroll-margin-top:120px}
 
     <div class="prose" style="color:#222">
       <p>Hi, I'm Fuwad. I design products, bring designers together, and make learning design a little more accessible.</p>
-      <p>I opened Figma for the first time in 2019 and haven't really closed it since. Today I lead <a href="https://friends.figma.com/kozhikode">Friends of Figma Kozhikode</a>, mentor aspiring designers one-on-one, and share what I learn with 5K+ people on Instagram at <a href="https://instagram.com/fuwad.design">@fuwad.design</a>.</p>
+      <p>I opened Figma for the first time in 2019 and haven't really closed it since. Today I lead <a href="https://friends.figma.com/kozhikode" target="_blank" rel="noopener noreferrer">Friends of Figma Kozhikode</a>, mentor aspiring designers one-on-one, and share what I learn with 5K+ people on Instagram at <a href="https://instagram.com/fuwad.design" target="_blank" rel="noopener noreferrer">@fuwad.design</a>.</p>
       <p>I'm applying for the <strong style="font-weight:500">Design Advocate</strong> role at Figma. This page is my case for why: not a pile of screens, but evidence of the community I've built, the sessions I've taught, and the designers I've helped.</p>
     </div>
 
@@ -509,6 +509,8 @@ section[id]{scroll-margin-top:120px}
 </section>
 
 <script>
+// external links open in a new tab
+document.querySelectorAll('a[href^="http"]').forEach(function(a){if(a.hostname!==location.hostname){a.target="_blank";a.rel="noopener noreferrer"}});
 // sessions scroll fade
 (function(){
   var p=document.querySelector('.posters');if(!p)return;
