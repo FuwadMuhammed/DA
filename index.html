@@ -192,6 +192,10 @@ body.vopen .portrait-wrap .play{opacity:0;pointer-events:none}
 .ig-av .slot small{font-size:9px;padding:0}
 .ig b{font-weight:600;display:block;font-size:17px;line-height:22px}
 .ig em{font-style:normal;font-size:14px;color:var(--mute)}
+.ig-row{grid-column:1/-1;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:10px -20px 0;padding:2px 20px 8px;scrollbar-width:none}
+.ig-row::-webkit-scrollbar{display:none}
+.ig-card{flex:none;width:326px;max-width:calc(100vw - 80px);height:600px;border-radius:14px;overflow:hidden;scroll-snap-align:start;border:1px solid var(--line);background:#fff}
+.ig-card iframe{display:block;width:100%;height:100%;border:0}
 .ig-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
 .ig-grid .slot{aspect-ratio:4/5;border-radius:8px}
 
@@ -258,6 +262,7 @@ button.chip{font-family:inherit;cursor:pointer}
   .work-grid a{width:auto}
   .work-grid img{display:none}
   .faq summary::after{display:none}
+  .ig-row{display:none}
   .quote,.card,.tl-row,.learn div,.poster{break-inside:avoid}
   .posters{flex-wrap:wrap;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
   .poster{width:calc(50% - 6pt)}
@@ -490,10 +495,13 @@ section[id]{scroll-margin-top:120px}
   <div class="ig">
     <div class="ig-av"><div class="slot"><img src="assets/fuwad.webp" alt=""></div></div>
     <div><b>fuwad.design</b><em>5K+ followers · design, Figma &amp; community</em></div>
-    <div class="ig-grid">
-      <div class="slot"><img src="assets/post-1.jpg" alt="" onerror="this.hidden=true"><small>post-1</small></div>
-      <div class="slot"><img src="assets/post-2.jpg" alt="" onerror="this.hidden=true"><small>post-2</small></div>
-      <div class="slot"><img src="assets/post-3.jpg" alt="" onerror="this.hidden=true"><small>post-3</small></div>
+    <div class="ig-row" tabindex="0" aria-label="Instagram posts, scroll sideways">
+      <div class="ig-card"><iframe src="https://www.instagram.com/reel/DdO6TTxJzR6/embed" title="Instagram reel by fuwad.design" loading="lazy" scrolling="no" allowtransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="ig-card"><iframe src="https://www.instagram.com/reel/DdJ8YMJMoN_/embed" title="Instagram reel by fuwad.design" loading="lazy" scrolling="no" allowtransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="ig-card"><iframe src="https://www.instagram.com/reel/Dc0667ZJVMx/embed" title="Instagram reel by fuwad.design" loading="lazy" scrolling="no" allowtransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="ig-card"><iframe src="https://www.instagram.com/reel/DU3Gy34CWEa/embed" title="Instagram reel by fuwad.design" loading="lazy" scrolling="no" allowtransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="ig-card"><iframe src="https://www.instagram.com/p/DZ_GTT2jDZA/embed" title="Instagram post by fuwad.design" loading="lazy" scrolling="no" allowtransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="ig-card"><iframe src="https://www.instagram.com/reel/DH6R0U7TVPb/embed" title="Instagram reel by fuwad.design" loading="lazy" scrolling="no" allowtransparency="true" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
     </div>
   </div>
   <div class="chips"><a class="chip" href="https://instagram.com/fuwad.design" target="_blank" rel="noopener">@fuwad.design <span>↗</span></a></div>
