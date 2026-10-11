@@ -284,10 +284,19 @@ button.chip{font-family:inherit;cursor:pointer}
   .quote,.card,.tl-row,.learn div,.poster,.work-grid a,.uses div,.nums,.ig,.faq details,.hands,.hero-body .chips,.prose,.stats,img{break-inside:avoid;page-break-inside:avoid}
   h2,h3,.since{break-after:avoid;page-break-after:avoid}
   .posters,.work-grid,.faq,.uses,.tl,.learn,.quotes{break-before:auto}
-  .posters{display:grid;grid-template-columns:1fr 1fr;gap:10pt;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
-  .poster{width:auto;margin:0!important}
+  .posters{display:block;font-size:0;overflow:visible;margin:12pt 0 0;padding:0;-webkit-mask-image:none;mask-image:none}
+  .poster{display:inline-block!important;vertical-align:top;width:calc(50% - 5pt)!important;margin:0 0 10pt 0!important;font-size:13px;break-inside:avoid;page-break-inside:avoid}
+  .poster:nth-child(odd){margin-right:10pt!important}
+  .poster.more{height:auto}
   .ig,.ig-av,.ig-grid .slot,.poster.more{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .hands{animation:none;width:110pt}
+  .rail,.hands,.quote img,.quote .ini,.work-grid img,.ig-av,.ig-grid{display:none!important}
+  .poster:nth-child(n+5) img{display:none}
+  .poster img{max-height:210pt;object-fit:contain}
+  .ig{background:#fff!important;color:#111!important;border-color:#ddd!important;display:block}
+  .ig b{color:#111!important}.ig em{color:#555!important}
+  .work-grid{gap:10pt}
+  .work-grid b{margin-top:0}
   .closing{margin-top:28pt}
 }
 /* intro video modal */
